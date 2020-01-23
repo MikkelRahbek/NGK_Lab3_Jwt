@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGK_Lab3_V2", "NGK_Lab3_V2\NGK_Lab3_V2.csproj", "{896193A2-B262-4491-B7C7-5DED7FDB7D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGK_Lab3_V2.Test.Unit", "NGK_Lab3_V2.Test.Unit\NGK_Lab3_V2.Test.Unit.csproj", "{F6C9F7B7-0E23-4889-913E-34BF35587C44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{896193A2-B262-4491-B7C7-5DED7FDB7D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896193A2-B262-4491-B7C7-5DED7FDB7D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896193A2-B262-4491-B7C7-5DED7FDB7D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896193A2-B262-4491-B7C7-5DED7FDB7D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C9F7B7-0E23-4889-913E-34BF35587C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C9F7B7-0E23-4889-913E-34BF35587C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C9F7B7-0E23-4889-913E-34BF35587C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C9F7B7-0E23-4889-913E-34BF35587C44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DEFADB4-0AC4-4A9D-A2DA-BB0BF9E30FB1}
+	EndGlobalSection
+EndGlobal

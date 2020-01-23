@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "ba1409e9-8a2d-43e7-9692-e68e1971aba0",
+		"name": "NGK_Lab3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AccountController",
+			"item": [
+				{
+					"name": "api/account/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6da76ea4-4109-4d9b-a99a-9dbfe2023add",
+								"exec": [
+									"var UserInfo = {\r",
+									"    \"Email\": \"$randomExampleEmail\",\r",
+									"    \"FirstName\": \"$randomFirstName\",\r",
+									"    \"LastName\": \"$randomLastName\",\r",
+									"    \"Password\": \"1234\"\r",
+									"};\r",
+									"\r",
+									"pm.test(\"StatusTest_Equals200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Email\": \"tester@emailemail.com\",\n\t\"FirstName\": \"FN\",\n\t\"LastName\": \"LN\",\n\t\"Password\": \"1234!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44372/api/account/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44372",
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/account/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"Test@Mail.com\",\n\t\"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44372/api/account/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44372",
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

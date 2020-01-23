@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "81115a57-0196-4e09-9843-16a0fa4e3326",
+		"name": "NGK_WeatherStation_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/WeatherStation/Latest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "966bdb94-77f2-4cd6-87a7-69d68197281c",
+						"exec": [
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = {\r",
+							"        \"properties\": {\r",
+							"            \"date\": {\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"time\": {\r",
+							"                \"type\": \"string\"\r",
+							"            }\r",
+							"            \r",
+							"        }\r",
+							"    };\r",
+							"\r",
+							"pm.test(\"StatusTest_Equals200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('Schema is valid', function() {\r",
+							"    pm.expect(ajv.validate(schema, {date: '01-01-2020'})).to.be.true;\r",
+							"    pm.expect(ajv.validate(schema, {time: \"12:00\"})).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44399/api/WeatherStation/Latest",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44399",
+					"path": [
+						"api",
+						"WeatherStation",
+						"Latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/WeatherStation/ByDate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5a57d24-cf9d-4ea4-b5c4-354629b8a8bf",
+						"exec": [
+							"pm.test(\"StatusTest_Equals200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DateIs_18-01-2020\", function () {\r",
+							"    var jsonDataArr = pm.response.json();\r",
+							"    var index, len;\r",
+							"    \r",
+							"    for (index = 0, len = jsonDataArr.length; index < len; ++index) {\r",
+							"        var jsonData = jsonDataArr[index];\r",
+							"        pm.expect(jsonData.date).to.eql(\"18-01-2020\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44399/api/WeatherStation/18-01-2020",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44399",
+					"path": [
+						"api",
+						"WeatherStation",
+						"18-01-2020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/WeatherStation/22:00&23:00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fedd3470-c053-46bd-b3f8-d6c624a3b377",
+						"exec": [
+							"pm.test(\"StatusTest_Equals200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TimeIsBetween_22:00And23:00\", function () {\r",
+							"    var jsonDataArr = pm.response.json();\r",
+							"    var index, len;\r",
+							"    var fromHour = 21;\r",
+							"    var toHour = 24;\r",
+							"\r",
+							"    for (index = 0, len = jsonDataArr.length; index < len; ++index) {\r",
+							"        var jsonData = jsonDataArr[index];\r",
+							"        var strArr = jsonData.time.split(\":\");\r",
+							"        var readingHour = parseInt(strArr[0], 10);\r",
+							"        var readingMinute = parseInt(strArr[1], 10);\r",
+							"        \r",
+							"        pm.expect(readingHour).to.be.above(fromHour);\r",
+							"        pm.expect(readingHour).to.be.below(toHour);\r",
+							"        \r",
+							"        if(readingHour > fromHour) {\r",
+							"            pm.expect(readingMinute).to.be.above(-1)\r",
+							"        }\r",
+							"        \r",
+							"        if(readingHour < fromHour) {\r",
+							"            pm.expect(readingMinute).to.be.below(1)\r",
+							"        }\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44399/api/WeatherStation/22:00&23:00",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44399",
+					"path": [
+						"api",
+						"WeatherStation",
+						"22:00&23:00"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
